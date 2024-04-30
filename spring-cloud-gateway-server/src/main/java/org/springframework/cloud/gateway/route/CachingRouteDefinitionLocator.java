@@ -34,10 +34,13 @@ public class CachingRouteDefinitionLocator implements RouteDefinitionLocator, Ap
 
 	private static final String CACHE_KEY = "routeDefs";
 
+	// 路由定义定位器
 	private final RouteDefinitionLocator delegate;
 
+	// 路由定义信息
 	private final Flux<RouteDefinition> routeDefinitions;
 
+	// 本地缓存集合
 	private final Map<String, List> cache = new ConcurrentHashMap<>();
 
 	public CachingRouteDefinitionLocator(RouteDefinitionLocator delegate) {
@@ -58,6 +61,7 @@ public class CachingRouteDefinitionLocator implements RouteDefinitionLocator, Ap
 	 * Clears the cache of routeDefinitions.
 	 * @return routeDefinitions flux
 	 */
+	// 刷新本地缓存, 先清空本地缓存再获取一份新的路由定义信息存储
 	public Flux<RouteDefinition> refresh() {
 		this.cache.clear();
 		return this.routeDefinitions;

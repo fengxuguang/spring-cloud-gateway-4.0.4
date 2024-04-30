@@ -82,6 +82,8 @@ public class FilteringWebHandler implements WebHandler {
 		List<GatewayFilter> combined = new ArrayList<>(this.globalFilters);
 		// 加入全局过滤器
 		combined.addAll(gatewayFilters);
+
+		// 过滤器排序
 		// TODO: needed or cached?
 		AnnotationAwareOrderComparator.sort(combined);
 
@@ -89,6 +91,7 @@ public class FilteringWebHandler implements WebHandler {
 			logger.debug("Sorted gatewayFilterFactories: " + combined);
 		}
 
+		// 按照优先级请求进行过滤
 		return new DefaultGatewayFilterChain(combined).filter(exchange);
 	}
 

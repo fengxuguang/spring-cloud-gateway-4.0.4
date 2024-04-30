@@ -43,16 +43,22 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.t
  */
 public class Route implements Ordered {
 
+	// 路由 ID
 	private final String id;
 
+	// 路由地址
 	private final URI uri;
 
+	// 优先级
 	private final int order;
 
+	// 路由断言, 判断请求路径是否匹配
 	private final AsyncPredicate<ServerWebExchange> predicate;
 
+	// 网关过滤器
 	private final List<GatewayFilter> gatewayFilters;
 
+	// 元数据
 	private final Map<String, Object> metadata;
 
 	private Route(String id, URI uri, int order, AsyncPredicate<ServerWebExchange> predicate,

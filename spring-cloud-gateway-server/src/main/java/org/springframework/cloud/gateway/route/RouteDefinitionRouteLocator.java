@@ -57,10 +57,19 @@ public class RouteDefinitionRouteLocator implements RouteLocator {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
+	/**
+	 * 路由定义定位器
+	 */
 	private final RouteDefinitionLocator routeDefinitionLocator;
 
+	/**
+	 * 配置服务
+	 */
 	private final ConfigurationService configurationService;
 
+	/**
+	 * 路由断言
+	 */
 	private final Map<String, RoutePredicateFactory> predicates = new LinkedHashMap<>();
 
 	private final Map<String, GatewayFilterFactory> gatewayFilterFactories = new HashMap<>();

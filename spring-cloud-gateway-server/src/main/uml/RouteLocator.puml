@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface RouteLocator
+class CachingRouteLocator
+class RouteDefinitionRouteLocator
+class CompositeRouteLocator
+
+RouteLocator <|-- CachingRouteLocator
+RouteLocator <|-- RouteDefinitionRouteLocator
+RouteLocator <|-- CompositeRouteLocator
+
+
+@enduml
